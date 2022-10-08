@@ -1,25 +1,29 @@
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  let [color, setColor] = useState("#ff0000");
+  let [size, setSize] = useState(50)
+  function buttonModifier() {
+    const rgb = ['a','b','c','d','e','f','0','1','2','3','4','5','6','7','8','9'];
+    let color = '#'  //this is what we'll return!
+    for(var i = 0; i < 6; i++)   // 6 is total number of characters in hex
+    {
+        let x = Math.floor((Math.random()*16));  // 16 for hex
+        color += rgb[x]; 
+    }
+    setColor(color)
+    setSize(size*2)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button  style={{ backgroundColor:  color , width: size, height: size }} onClick={buttonModifier}>STOP</button>
     </div>
   );
 }
+
+
 
 export default App;
